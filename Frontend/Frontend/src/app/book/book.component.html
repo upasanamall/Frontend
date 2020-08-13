@@ -1,0 +1,98 @@
+<h1>{{title1}}</h1>
+<h2>My Books</h2>
+
+<ul class="books">
+  <li *ngFor="let book of books">
+    <span class="badge">{{book.id}}</span> {{book.name}}
+  </li>
+</ul>
+
+<button (click)="add_book=true"> Add Book</button>&nbsp;
+<button (click)="update_book=true">Update Book</button>&nbsp;
+<button (click)="delete_book=true">Delete Book</button>
+<br>
+<br/>
+<div *ngIf="add_book">
+  <table>
+    <tr>
+      <td>Enter Id of the book:</td>
+      <td>
+        <input type="number" #id>
+      </td>
+    </tr>
+    <br/>
+
+    <tr>
+      <td>Enter Name of the Book:</td>
+      <td>
+        <input type="text" #name>
+        <br>
+      </td>
+    </tr>
+    <br>
+
+    <tr>
+      <td>
+        <button (click)="addBook(id.value,name.value);add_book=false">Add Record</button>
+      </td>
+    </tr>
+
+  </table>
+
+  <br/>
+</div>
+
+<div *ngIf="update_book">
+
+  <table>
+    <tr>
+      <td>Enter Id of the book:</td>
+      <td>
+        <input type="number" #id>
+      </td>
+    </tr>
+    <br/>
+
+    <tr>
+      <td>Enter Name of the Book:</td>
+      <td>
+        <input type="text" #name>
+        <br>
+      </td>
+    </tr>
+    <br>
+
+    <tr>
+      <td>
+        <button (click)="updateBook(id.value,name.value);update_book=false">Update Record</button>
+      </td>
+    </tr>
+
+  </table>
+</div>
+<br>
+
+<div *ngIf="delete_book">
+
+  <table>
+    <tr>
+      <td>Enter Id of the book:</td>
+      <td>
+        <input type="number" #id>
+      </td>
+    </tr>
+    <br/>
+
+
+
+    <tr>
+      <td>
+        <button (click)="deleteBook(id.value);delete_book=false">Delete Record</button>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
